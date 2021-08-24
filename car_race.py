@@ -13,7 +13,6 @@ import os
 class CarRacing:
     def __init__(self, keyboard_game=True, increase_speed=1, low_enemy_car_speed=5, max_enemy_car_speed=11):
 
-        pygame.init()
         self.display_width = 800
         self.display_height = 600
         self.black = (0, 0, 0)
@@ -29,9 +28,8 @@ class CarRacing:
 
         self.quit_game = False
 
-        self.reset()
-
     def reset(self):
+        pygame.init()
         self.crashed = False
 
         self.carImg = pygame.image.load(self.root_path + "/img/car.png")
@@ -61,6 +59,7 @@ class CarRacing:
         self.gameDisplay.blit(self.carImg, (car_x_coordinate, car_y_coordinate))
 
     def start(self):
+        self.reset()
         self.gameDisplay = pygame.display.set_mode((self.display_width, self.display_height))
         pygame.display.set_caption('Car Race -- Anuj')
         self.run_car()
